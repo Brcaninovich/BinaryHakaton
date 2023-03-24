@@ -3,6 +3,7 @@ package com.hakaton.binaryhakaton;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.hakaton.binaryhakaton.databinding.ActivityGlavniMenuBinding;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -10,7 +11,6 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.hakaton.binaryhakaton.databinding.ActivityGlavniMenuBinding;
 
 public class GlavniMenu extends AppCompatActivity {
 

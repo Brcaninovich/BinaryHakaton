@@ -17,6 +17,14 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:exported="false"
+            android:label="@string/title_activity_glavni_menu">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".GlavniMenu"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

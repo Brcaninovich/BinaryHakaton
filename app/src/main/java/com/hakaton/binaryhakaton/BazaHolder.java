@@ -1,5 +1,11 @@
 package com.hakaton.binaryhakaton;
 
-public class BazaHolder {
+import android.app.Application;
 
+public class BazaHolder extends Application {
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+    }
 }

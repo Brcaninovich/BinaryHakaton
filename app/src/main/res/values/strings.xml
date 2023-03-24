@@ -4,4 +4,136 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <string-array name="kantoni">
+        <item>Odaberi kanton</item>
+        <item>Unsko-sanski</item>
+        <item>Posavski</item>
+        <item>Tuzlanski</item>
+        <item>Zeničko-dobojski</item>
+        <item>Bosansko-podrinjski</item>
+        <item>Srednjobosanski</item>
+        <item>Hercegovačko-neretvanski</item>
+        <item>Zapadnohercegovački</item>
+        <item>Kanton Sarajevo</item>
+        <item>Kanton 10</item>
+    </string-array>
+
+    <string-array name="UnskoSanski">
+        <item>Odaberi grad</item>
+        <item>Bihać</item>
+        <item>Bosanska Krupa</item>
+        <item>Bosanski Petrovac</item>
+        <item>Bužim</item>
+        <item>Cazin</item>
+        <item>Ključ</item>
+        <item>Sanski Most</item>
+        <item>Velika Kladuša</item>
+    </string-array>
+
+    <string-array name="Posavski">
+        <item>Odaberi grad</item>
+        <item>Domaljevac-Šamac</item>
+        <item>Odžak</item>
+        <item>Orašje</item>
+    </string-array>
+
+    <string-array name="Tuzlanski">
+        <item>Odaberi grad</item>
+        <item>Banovići</item>
+        <item>Čelić</item>
+        <item>Doboj Istok</item>
+        <item>Gračanica</item>
+        <item>Gradačac</item>
+        <item>Kalesija</item>
+        <item>Kladanj</item>
+        <item>Lukavac</item>
+        <item>Sapna</item>
+        <item>Srebrenik</item>
+        <item>Teočak</item>
+        <item>Tuzla</item>
+        <item>Živinice</item>
+    </string-array>
+
+    <string-array name="ZenickoDobojski">
+        <item>Odaberi grad</item>
+        <item>Breza</item>
+        <item>Kakanj</item>
+        <item>Maglaj</item>
+        <item>Olovo</item>
+        <item>Tešanj</item>
+        <item>Usora</item>
+        <item>Vareš</item>
+        <item>Visoko</item>
+        <item>Zavidovići</item>
+        <item>Zenica</item>
+        <item>Žepče</item>
+    </string-array>
+
+    <string-array name="BosanskoPodrinjski">
+        <item>Odaberi grad</item>
+        <item>Foča</item>
+        <item>Grad Goražde</item>
+        <item>Pale</item>
+    </string-array>
+
+    <string-array name="SrednjoBosanski">
+        <item>Odaberi grad</item>
+        <item>Bugojno</item>
+        <item>Busovača</item>
+        <item>Dobretići</item>
+        <item>Donji Vakuf</item>
+        <item>Fojnica</item>
+        <item>Gornji Vakuf-Uskoplje</item>
+        <item>Jajce</item>
+        <item>Kiseljak</item>
+        <item>Kreševo</item>
+        <item>Novi Travnik</item>
+        <item>Travnik</item>
+        <item>Vitez</item>
+    </string-array>
+
+    <string-array name="HercegovackoNeretva">
+        <item>Odaberi grad</item>
+        <item>Čapljina</item>
+        <item>Čitluk</item>
+        <item>Jablanica</item>
+        <item>Konjic</item>
+        <item>Mostar</item>
+        <item>Neum</item>
+        <item>Prozor-Rama</item>
+        <item>Ravno</item>
+        <item>Stolac</item>
+    </string-array>
+
+    <string-array name="ZapadnoHerceg">
+        <item>Odaberi grad</item>
+        <item>Grude</item>
+        <item>Ljubuški</item>
+        <item>Posušje</item>
+        <item>Široki Brijeg</item>
+    </string-array>
+
+    <string-array name="KantonSarajevo">
+        <item>Odaberi grad</item>
+        <item>Hadžići</item>
+        <item>Ilijaš</item>
+        <item>Sarajevo - Centar</item>
+        <item>Sarajevo - Novi grad</item>
+        <item>Sarajevo - Novo Sarajevo</item>
+        <item>Sarajevo - Stari grad</item>
+        <item>Trnovo</item>
+        <item>Vogošća</item>
+    </string-array>
+
+    <string-array name="Kanton10">
+        <item>Odaberi grad</item>
+        <item>Bosansko Grahovo</item>
+        <item>Drvar</item>
+        <item>Glamoč</item>
+        <item>Kupres</item>
+        <item>Grad Livno</item>
+        <item>Tomislavgrad</item>
+    </string-array>
+
 </resources>

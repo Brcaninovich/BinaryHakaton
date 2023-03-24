@@ -13,6 +13,9 @@
         android:theme="@style/Theme.BinaryHakaton"
         tools:targetApi="31">
         <activity
+            android:name=".RegisterForm"
+            android:exported="false" />
+        <activity
             android:name=".LoginForm"
             android:exported="false" />
         <activity

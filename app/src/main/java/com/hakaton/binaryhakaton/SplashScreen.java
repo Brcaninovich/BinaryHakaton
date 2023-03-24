@@ -26,7 +26,7 @@ public class SplashScreen extends AppCompatActivity {
 
 
 
-        //kritika.animate().translationY(-1400).setDuration(2700).setStartDelay(0);
+        //pik.animate().translationY(-1400).setDuration(2700).setStartDelay(0);
 
 
         new Handler().postDelayed(new Runnable() {

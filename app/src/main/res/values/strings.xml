@@ -136,4 +136,38 @@
         <item>Tomislavgrad</item>
     </string-array>
 
+    <string-array name="Kategorija">
+        <item>Odaberi:</item>
+        <item>Automobil</item>
+    </string-array>
+
+    <string-array name="Stanje_Artikla">
+        <item>Odaberi:</item>
+        <item>Novo</item>
+        <item>Korišteno</item>
+    </string-array>
+
+    <string-array name="Gorivo">
+        <item>Odaberi:</item>
+        <item>Benzin</item>
+        <item>Dizel</item>
+        <item>Plin</item>
+        <item>Hibrid</item>
+        <item>Elektro</item>
+    </string-array>
+
+    <string-array name="Transmisija">
+        <item>Odaberi:</item>
+        <item>Manuelno</item>
+        <item>Automatik</item>
+    </string-array>
+
+    <string-array name="Da_ne">
+        <item>Odaberi:</item>
+        <item>Da</item>
+        <item>Ne</item>
+    </string-array>
+
+
+
 </resources>

@@ -9,5 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="green">#94FBAB</color>
     <color name="hardgreen">#3BC14A</color>
+    <color name="grey">#7A7A7A</color>
 
 </resources>

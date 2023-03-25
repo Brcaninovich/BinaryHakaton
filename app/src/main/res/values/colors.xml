@@ -10,5 +10,6 @@
     <color name="green">#94FBAB</color>
     <color name="hardgreen">#3BC14A</color>
     <color name="grey">#7A7A7A</color>
+    <color name="shadowgrey">#CBD4C2</color>
 
 </resources>

@@ -11,16 +11,551 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/markets"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal">
+
+
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_store_24"
+                    android:layout_marginRight="60dp">
+
+                </ImageView>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/basic"
+                    android:textSize="23dp"
+                    android:text="Market"/>
+
+
+
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/market"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal">
+
+
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_account_balance_wallet_24"
+                    android:layout_marginRight="60dp">
+
+                </ImageView>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/basic"
+                    android:textSize="22dp"
+                    android:text="Novcanik"/>
+
+
+
+
+
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/shadowgrey"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TEST TEST TEST"/>
+                android:layout_height="match_parent"
+                android:text="MOJ PIK"
+                android:layout_marginLeft="5dp"
+                android:textSize="25dp">
+
+            </TextView>
+
+
 
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/markete"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="7dp"
+            android:orientation="horizontal">
+
+
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/outline_subject_24"
+                android:layout_marginRight="60dp">
+
+            </ImageView>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/basic"
+                android:textSize="22dp"
+                android:text="Objavite artikal"/>
+
+        </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/artikli"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal">
+
+
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/back_menu_24"
+                    android:layout_marginRight="60dp">
+
+                </ImageView>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/basic"
+                    android:textSize="22dp"
+                    android:text="Zadnje otvoreni artikli"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/spaseni_artikli"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal">
+
+
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/outline_star_outline_24"
+                    android:layout_marginRight="60dp">
+
+                </ImageView>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/basic"
+                    android:textSize="22dp"
+                    android:text="Spašeni artikli"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/spaseni_korisnici"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal">
+
+
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/outline_supervisor_account_24"
+                    android:layout_marginRight="60dp">
+
+                </ImageView>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/basic"
+                    android:textSize="22dp"
+                    android:text="Spašeni korisnici"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/spasene_pretrage"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal">
+
+
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_youtube_searched_for_24"
+                    android:layout_marginRight="60dp">
+
+                </ImageView>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/basic"
+                    android:textSize="22dp"
+                    android:text="Spašene pretrage"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/shadowgrey"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="MOJ PIK"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="25dp">
+
+                </TextView>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/moji_artikli"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal">
+
+
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_featured_play_list_24"
+                    android:layout_marginRight="60dp">
+
+                </ImageView>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/basic"
+                    android:textSize="22dp"
+                    android:text="Moji artikli"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/pik_narudzbe"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal">
+
+
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_fire_truck_24"
+                    android:layout_marginRight="60dp">
+
+                </ImageView>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/basic"
+                    android:textSize="22dp"
+                    android:text="PIK narudžbe"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/pik_shop"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal">
+
+
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_storefront_24"
+                    android:layout_marginRight="60dp">
+
+                </ImageView>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/basic"
+                    android:textSize="22dp"
+                    android:text="PIK Shopovi"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/shadowgrey"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="OSTALI LINKOVI"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="25dp">
+
+                </TextView>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/pik_blog"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal">
+
+
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/outline_badge_24"
+                    android:layout_marginRight="60dp">
+
+                </ImageView>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/basic"
+                    android:textSize="22dp"
+                    android:text="PIK Blog"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/marketing"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal">
+
+
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_app_registration_24"
+                    android:layout_marginRight="60dp">
+
+                </ImageView>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/basic"
+                    android:textSize="22dp"
+                    android:text="Marketing"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/sigurnost"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal">
+
+
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_health_and_safety_24"
+                    android:layout_marginRight="60dp">
+
+                </ImageView>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/basic"
+                    android:textSize="22dp"
+                    android:text="Online sigurnost"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/podrska_korisnicima"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal">
+
+
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_question_mark_24"
+                    android:layout_marginRight="60dp">
+
+                </ImageView>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/basic"
+                    android:textSize="22dp"
+                    android:text="Podrška korisnicima"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/postavke"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal">
+
+
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_settings_24"
+                    android:layout_marginRight="60dp">
+
+                </ImageView>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/basic"
+                    android:textSize="22dp"
+                    android:text="Postavke"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/odjava"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal">
+
+
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_logout_24"
+                    android:layout_marginRight="60dp">
+
+                </ImageView>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/basic"
+                    android:textSize="22dp"
+                    android:text="Odjava"/>
+
+            </LinearLayout>
+
+
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
 
     </ScrollView>
 

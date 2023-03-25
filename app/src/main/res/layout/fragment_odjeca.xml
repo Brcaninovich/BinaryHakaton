@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.AutomobilPrikaz.AutomobilFragment"
+    tools:context=".ui.OdjecaPrikaz.OdjecaFragment"
     android:orientation="vertical">
 
     <LinearLayout
@@ -60,7 +60,7 @@
             android:background="@color/black"/>
 
         <TextView
-            android:id="@+id/naslov_automobila"
+            android:id="@+id/naslov_odjece"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -130,7 +130,7 @@
             android:layout_height="2dp"/>
 
         <TextView
-            android:id="@+id/godiste_automobila"
+            android:id="@+id/velicina_odjece"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -140,118 +140,40 @@
             android:layout_marginBottom="10dp"/>
 
         <TextView
-            android:id="@+id/kilometraza_automobila"
+            android:id="@+id/gender_odjece"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginStart="10dp"
             android:textSize="20sp"
-            android:text="Kilometraza: 2013"
+            android:text="Godiste: 2013"
             android:layout_marginBottom="10dp"/>
 
         <TextView
-            android:id="@+id/gorivo_automobila"
+            android:id="@+id/sezona_odjece"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginStart="10dp"
             android:textSize="20sp"
-            android:text="Gorivo: Benzin"
+            android:text="Godiste: 2013"
             android:layout_marginBottom="10dp"/>
 
         <TextView
-            android:id="@+id/kilovati_automobila"
+            android:id="@+id/vrsta_odjece"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginStart="10dp"
             android:textSize="20sp"
-            android:text="Kilovati: 2013"
-            android:layout_marginBottom="10dp"/>
-
-        <TextView
-            android:id="@+id/konjska_snaga_automobila"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="10dp"
-            android:textSize="20sp"
-            android:text="KS: 2013"
-            android:layout_marginBottom="10dp"/>
-
-        <TextView
-            android:id="@+id/transmisija_automobila"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="10dp"
-            android:textSize="20sp"
-            android:text="Transmisija: Automatik"
-            android:layout_marginBottom="10dp"/>
-
-        <TextView
-            android:id="@+id/boja_automobila"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="10dp"
-            android:textSize="20sp"
-            android:text="Boja: Crna"
-            android:layout_marginBottom="10dp"/>
-
-        <TextView
-            android:id="@+id/registracija_automobila"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="10dp"
-            android:textSize="20sp"
-            android:text="Regiostracija: Da"
-            android:layout_marginBottom="10dp"/>
-
-        <TextView
-            android:id="@+id/esp_automobila"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="10dp"
-            android:textSize="20sp"
-            android:text="Regiostracija: Da"
-            android:layout_marginBottom="10dp"/>
-
-        <TextView
-            android:id="@+id/klima_automobila"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="10dp"
-            android:textSize="20sp"
-            android:text="Regiostracija: Da"
-            android:layout_marginBottom="10dp"/>
-
-        <TextView
-            android:id="@+id/navigacija_automobila"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="10dp"
-            android:textSize="20sp"
-            android:text="Regiostracija: Da"
-            android:layout_marginBottom="10dp"/>
-
-        <TextView
-            android:id="@+id/tempomat_automobila"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="10dp"
-            android:textSize="20sp"
-            android:text="Regiostracija: Da"
+            android:text="Godiste: 2013"
             android:layout_marginBottom="10dp"/>
 
 
+
+
         <TextView
-            android:id="@+id/opis_automobila"
+            android:id="@+id/opis_odjece"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -262,7 +184,7 @@
             android:layout_marginBottom="10dp"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/ugovori_kupovinu"
+            android:id="@+id/dodaj_kosarica"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:layout_marginTop="20dp"
@@ -270,7 +192,7 @@
             android:layout_height="wrap_content"
             app:cornerRadius="10dp"
             android:backgroundTint="@color/black"
-            android:text="UGOVORI KUPOVINU"
+            android:text="DODAJ U KOSARU"
             />
 
 

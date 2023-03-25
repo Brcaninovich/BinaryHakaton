@@ -244,8 +244,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/detaljan_opis_input"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="numberDecimal"/>
+                    android:layout_height="wrap_content" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -268,6 +267,155 @@
                 app:strokeColor="#878787"
                 />
 
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dodatne_info_skrol_odjeca"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:textColor="#A5A5A5"
+                android:text="Velicina:"/>
+
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                app:strokeWidth="2dp"
+                app:strokeColor="#A5A5A5"
+                app:cardCornerRadius="4dp">
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/odaberi_velicinu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawSelectorOnTop="true"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:textColor="#A5A5A5"
+                android:text="Rod:"/>
+
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                app:strokeWidth="2dp"
+                app:strokeColor="#A5A5A5"
+                app:cardCornerRadius="4dp">
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/odaberi_rod"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawSelectorOnTop="true"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:textColor="#A5A5A5"
+                android:text="Sezona:"/>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                app:strokeWidth="2dp"
+                app:strokeColor="#A5A5A5"
+                app:cardCornerRadius="4dp">
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/odaberi_sezonu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawSelectorOnTop="true"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:textColor="#A5A5A5"
+                android:text="Vrsta:"/>
+
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                app:strokeWidth="2dp"
+                app:strokeColor="#A5A5A5"
+                app:cardCornerRadius="4dp">
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/odaberi_vrsta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawSelectorOnTop="true"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/dodatna_svojstva_button2"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="Nastavite dalje"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/white"
+                app:cornerRadius="30dp"
+                app:strokeWidth="2dp"
+                app:strokeColor="#878787"
+                />
 
         </LinearLayout>
 
@@ -665,7 +813,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/dodatne_slike_skrol_automobil"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"

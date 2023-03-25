@@ -1,4 +1,4 @@
-package com.hakaton.binaryhakaton.ui.AutomobilPrikaz;
+package com.hakaton.binaryhakaton.ui.OdjecaPrikaz;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,26 +16,27 @@ import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.hakaton.binaryhakaton.Artikal;
 import com.hakaton.binaryhakaton.BazaHolder;
-import com.hakaton.binaryhakaton.LoginForm;
 import com.hakaton.binaryhakaton.databinding.FragmentAutomobilBinding;
+import com.hakaton.binaryhakaton.databinding.FragmentOdjecaBinding;
 import com.hakaton.binaryhakaton.kategorija.Automobil;
+import com.hakaton.binaryhakaton.kategorija.Odjeca;
 import com.hakaton.binaryhakaton.obavljanje_kupovine_auta;
 
-public class AutomobilFragment extends Fragment {
+public class OdjecaFragment extends Fragment {
 
-    private FragmentAutomobilBinding binding;
+    private FragmentOdjecaBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        AutomobilViewModel automobilViewModel =
-                new ViewModelProvider(this).get(AutomobilViewModel.class);
+        OdjecaViewModel odjecaViewModel =
+                new ViewModelProvider(this).get(OdjecaViewModel.class);
 
-        binding = FragmentAutomobilBinding.inflate(inflater, container, false);
+        binding = FragmentOdjecaBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
 
         Artikal artikal = BazaHolder.getTemp_artikal();
-        Automobil automobil = artikal.kategorija;
+        Odjeca odjeca = artikal.odjeca;
         Glide
                 .with(getContext())
                 .load(artikal.slike.get(0))
@@ -43,24 +44,16 @@ public class AutomobilFragment extends Fragment {
                 .centerCrop()
                 .into(binding.slikeAutomobil);
 
-        binding.naslovAutomobila.setText(artikal.naziv_oglasa);
+        binding.naslovOdjece.setText(artikal.naziv_oglasa);
         binding.cijenaAutomobila.setText(artikal.cijena);
         binding.stanjeAutomobila.setText(artikal.stanje);
         binding.datumAutomobil.setText(artikal.objava_date);
         binding.objavaAutomobil.setText("Objavio: " + artikal.objavio_username);
-        binding.godisteAutomobila.setText("Godiste: " + automobil.godiste);
-        binding.kilometrazaAutomobila.setText("Kilometraza: " + automobil.kilometraza);
-        binding.gorivoAutomobila.setText("Gorivo: " + automobil.gorivo);
-        binding.kilovatiAutomobila.setText("Kilovati: " + automobil.kilovati);
-        binding.transmisijaAutomobila.setText("Transmisija: " + automobil.transmisija);
-        binding.konjskaSnagaAutomobila.setText("KS: " + automobil.konjske_snage);
-        binding.bojaAutomobila.setText(automobil.boja);
-        binding.registracijaAutomobila.setText("Registracija: " + automobil.registracija);
-        binding.espAutomobila.setText("ESP: " + automobil.esp);
-        binding.klimaAutomobila.setText("Klima: " + automobil.klima);
-        binding.navigacijaAutomobila.setText("Navigacija: " + automobil.navigacija);
-        binding.tempomatAutomobila.setText("Tempomat: " + automobil.tempomat);
-        binding.opisAutomobila.setText(artikal.detaljni_opis);
+        binding.velicinaOdjece.setText("Velicina: " + odjeca.velicina);
+        binding.genderOdjece.setText("Rod: " + odjeca.rod);
+        binding.sezonaOdjece.setText("Sezona: " + odjeca.sezona);
+        binding.vrstaOdjece.setText("Vrsta: " + odjeca.vrsta);
+        binding.opisOdjece.setText(artikal.detaljni_opis);
 
         FirebaseAuth mAuth;
         mAuth = FirebaseAuth.getInstance();
@@ -79,13 +72,9 @@ public class AutomobilFragment extends Fragment {
                 }
             });
 
-            binding.ugovoriKupovinu.setOnClickListener(new View.OnClickListener() {
+            binding.dodajKosarica.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    BazaHolder.temp_automobil = artikal.naziv_oglasa;
-                    Intent intent = new Intent(getActivity(), obavljanje_kupovine_auta.class);
-                    startActivity(intent);
-                    getActivity().finish();
                 }
             });
 
@@ -98,7 +87,7 @@ public class AutomobilFragment extends Fragment {
                 }
             });
 
-            binding.ugovoriKupovinu.setOnClickListener(new View.OnClickListener() {
+            binding.dodajKosarica.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(getActivity(), "Molimo, prijavite se....", Toast.LENGTH_SHORT).show();

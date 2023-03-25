@@ -31,6 +31,7 @@ import com.hakaton.binaryhakaton.R;
 import com.hakaton.binaryhakaton.databinding.FragmentAddBinding;
 import com.hakaton.binaryhakaton.databinding.FragmentDashboardBinding;
 import com.hakaton.binaryhakaton.kategorija.Automobil;
+import com.hakaton.binaryhakaton.kategorija.Odjeca;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -142,6 +143,29 @@ public class AddFragment extends Fragment {
             });
 
             db = FirebaseFirestore.getInstance();
+
+            ArrayAdapter<String> velicina = new ArrayAdapter<>(getActivity(),
+                    android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.velicina));
+            velicina.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            binding.odaberiVelicinu.setAdapter(velicina);
+
+            ArrayAdapter<String> gender= new ArrayAdapter<>(getActivity(),
+                    android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.gender));
+            gender.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            binding.odaberiRod.setAdapter(gender);
+
+            ArrayAdapter<String> sezona= new ArrayAdapter<>(getActivity(),
+                    android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Sezona));
+            gender.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            binding.odaberiSezonu.setAdapter(sezona);
+
+            ArrayAdapter<String> vrsta= new ArrayAdapter<>(getActivity(),
+                    android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Vrsta));
+            vrsta.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            binding.odaberiVrsta.setAdapter(vrsta);
+
+
+
 
             ArrayAdapter<String> kantoni = new ArrayAdapter<>(getActivity(),
                     android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.kantoni));
@@ -266,8 +290,22 @@ public class AddFragment extends Fragment {
             binding.dodatnaSvojstvaButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    binding.osnovneInfoSkrol.setVisibility(View.GONE);
-                    binding.dodatneInfoSkrolAutomobil.setVisibility(View.VISIBLE);
+                    if(binding.odaberiKategoriju.getSelectedItem().equals("Automobil")){
+                        binding.osnovneInfoSkrol.setVisibility(View.GONE);
+                        binding.dodatneInfoSkrolAutomobil.setVisibility(View.VISIBLE);
+                    }else if(binding.odaberiKategoriju.getSelectedItem().equals("Garderoba")){
+                        binding.osnovneInfoSkrol.setVisibility(View.GONE);
+                        binding.dodatneInfoSkrolOdjeca.setVisibility(View.VISIBLE);
+                    }
+
+                }
+            });
+
+            binding.dodatnaSvojstvaButton2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    binding.dodatneInfoSkrolOdjeca.setVisibility(View.GONE);
+                    binding.dodatneSlikeSkrolAutomobil.setVisibility(View.VISIBLE);
                 }
             });
 
@@ -313,25 +351,45 @@ public class AddFragment extends Fragment {
 
         final String cijena = binding.cijenaInput.getText().toString();
 
+            final String godiste = binding.godisteInput.getText().toString();
+            final String kilometraza = binding.kilometrazaInput.getText().toString();
+            final String gorivo = binding.odaberiGorivo.getSelectedItem().toString();
+            final String kilovati = binding.inputKilovati.getText().toString();
+            final String transmisija = binding.odaberiTransmisiju.getSelectedItem().toString();
+            final String konjske_snage = binding.inputKonjskaSnaga.getText().toString();
+            final String boja = binding.inputBoja.getText().toString();
+            final String registracija = binding.odabirRegistracija.getSelectedItem().toString();
+            final String esp = binding.odabirEsp.getSelectedItem().toString();
+            final String klima = binding.odabirKlima.getSelectedItem().toString();
+            final String navigacija = binding.odabirNavigacija.getSelectedItem().toString();
+            final String tempomat = binding.odabirTempomat.getSelectedItem().toString();
 
-        final String godiste = binding.godisteInput.getText().toString();
-        final String kilometraza = binding.kilometrazaInput.getText().toString();
-        final String gorivo = binding.odaberiGorivo.getSelectedItem().toString();
-        final String kilovati = binding.inputKilovati.getText().toString();
-        final String transmisija = binding.odaberiTransmisiju.getSelectedItem().toString();
-        final String konjske_snage = binding.inputKonjskaSnaga.getText().toString();
-        final String boja = binding.inputBoja.getText().toString();
-        final String registracija = binding.odabirRegistracija.getSelectedItem().toString();
-        final String esp = binding.odabirEsp.getSelectedItem().toString();
-        final String klima = binding.odabirKlima.getSelectedItem().toString();
-        final String navigacija = binding.odabirNavigacija.getSelectedItem().toString();
-        final String tempomat = binding.odabirTempomat.getSelectedItem().toString();
+            Automobil automobil = new Automobil("Automobil", godiste, kilometraza, gorivo,kilovati,
+                    transmisija, konjske_snage, boja, registracija, esp, klima, navigacija, tempomat);
 
-        Automobil automobil = new Automobil("Automobil", godiste, kilometraza, gorivo,kilovati,
-                transmisija, konjske_snage, boja, registracija, esp, klima, navigacija, tempomat);
 
-        Artikal artikal = new Artikal(naziv_artikla, stanje, objava_date, objava_user,
-                detaljni_opis, lokacija, lista_slika, cijena, automobil);
+
+            String velicina = binding.odaberiVelicinu.getSelectedItem().toString();
+            String gender = binding.odaberiRod.getSelectedItem().toString();
+            String Sezona = binding.odaberiSezonu.getSelectedItem().toString();
+            String vrsta = binding.odaberiVrsta.getSelectedItem().toString();
+            Odjeca odjeca = new Odjeca(velicina, gender, Sezona, vrsta);
+
+            String kateg = binding.odaberiKategoriju.getSelectedItem().toString();
+
+            Artikal artikal;
+
+            if(binding.odaberiKategoriju.getSelectedItem().equals("Automobil")){
+                artikal = new Artikal(naziv_artikla, stanje, objava_date, objava_user,
+                        detaljni_opis, lokacija, lista_slika, cijena, automobil, false, kateg);
+            }else{
+                artikal = new Artikal(naziv_artikla, stanje, objava_date, objava_user,
+                        detaljni_opis, lokacija, lista_slika, cijena, odjeca, false, kateg);
+
+            }
+
+
+
 
         db.collection("Artikli").document(naziv_artikla)
                 .set(artikal)

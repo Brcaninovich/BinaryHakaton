@@ -65,7 +65,11 @@ public class RecyclerViewModel extends RecyclerView.Adapter<RecyclerViewModel.My
             public void onClick(View view) {
                 BazaHolder.setTemp_artikal(artikal);
                 NavController navController = Navigation.findNavController(view);
-                navController.navigate(R.id.navigation_automobil);
+                if(artikal.kateg == "Automobil"){
+                    navController.navigate(R.id.navigation_automobil);
+                }else{
+                    navController.navigate(R.id.navigation_odjeca);
+                }
             }
         });
 

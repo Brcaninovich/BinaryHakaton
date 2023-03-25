@@ -40,4 +40,10 @@
         android:name="com.hakaton.binaryhakaton.ui.AutomobilPrikaz.AutomobilFragment"
         android:label="automobil"
         tools:layout="@layout/fragment_automobil" />
+
+    <fragment
+        android:id="@+id/navigation_odjeca"
+        android:name="com.hakaton.binaryhakaton.ui.OdjecaPrikaz.OdjecaFragment"
+        android:label="automobil"
+        tools:layout="@layout/fragment_odjeca" />
 </navigation>

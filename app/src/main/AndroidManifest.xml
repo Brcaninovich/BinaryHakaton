@@ -14,6 +14,13 @@
         android:theme="@style/Theme.BinaryHakaton"
         tools:targetApi="31">
         <activity
+            android:name=".obavljanje_kupovine_auta"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".EditArtikal"
             android:exported="false" />
         <activity

@@ -54,6 +54,7 @@ public class NotificationsFragment extends Fragment {
             myAdapter = new RecyclerAdapterr(getActivity(), artikalArrayList);
             binding.recyclerView.setAdapter(myAdapter);
 
+
             EventChangeListener();
         }else{
             Toast.makeText(getActivity(), "Molimo prijavite se...", Toast.LENGTH_LONG).show();

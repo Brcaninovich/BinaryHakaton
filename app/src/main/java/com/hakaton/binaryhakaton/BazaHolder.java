@@ -13,6 +13,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.hakaton.binaryhakaton.kategorija.Automobil;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class BazaHolder extends Application {
     static DatabaseReference reference_rd;
 
     public static Artikal temp_artikal;
+    public static String temp_automobil;
 
     public static Artikal getTemp_artikal() {
         return temp_artikal;
@@ -126,6 +128,10 @@ public class BazaHolder extends Application {
 
             }
         });
+
+    }
+
+    public static void update_artikal(){
 
     }
 }

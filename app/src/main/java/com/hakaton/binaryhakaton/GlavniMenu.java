@@ -44,7 +44,7 @@ public class GlavniMenu extends AppCompatActivity implements NavController.OnDes
 
     @Override
     public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
-        if (navDestination.getId() == R.id.navigation_automobil) {
+        if (navDestination.getId() == R.id.navigation_automobil || navDestination.getId() == R.id.navigation_odjeca) {
             binding.navView.setVisibility(View.GONE);
         } else {
             binding.navView.setVisibility(View.VISIBLE);

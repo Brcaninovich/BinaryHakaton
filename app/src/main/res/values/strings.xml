@@ -139,6 +139,43 @@
     <string-array name="Kategorija">
         <item>Odaberi:</item>
         <item>Automobil</item>
+        <item>Garderoba</item>
+    </string-array>
+
+    <string-array name="velicina">
+        <item>Odaberi:</item>
+        <item>XS</item>
+        <item>S</item>
+        <item>M</item>
+        <item>L</item>
+        <item>XL</item>
+        <item>XXL</item>
+        <item>XXXL</item>
+    </string-array>
+
+    <string-array name="gender">
+        <item>Odaberi:</item>
+        <item>Musko</item>
+        <item>Zensko</item>
+    </string-array>
+
+    <string-array name="Sezona">
+        <item>Odaberi:</item>
+        <item>Proljece</item>
+        <item>Ljeto</item>
+        <item>Jesen</item>
+        <item>Zima</item>
+    </string-array>
+
+    <string-array name="Vrsta">
+        <item>Odaberi:</item>
+        <item>Jakna</item>
+        <item>Hlače</item>
+        <item>Majica</item>
+        <item>Dukserica</item>
+        <item>Trenerka</item>
+        <item>Helanke</item>
+        <item>Sorc</item>
     </string-array>
 
     <string-array name="Stanje_Artikla">

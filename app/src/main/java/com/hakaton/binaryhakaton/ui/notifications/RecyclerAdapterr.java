@@ -75,7 +75,22 @@ public class RecyclerAdapterr extends RecyclerView.Adapter<RecyclerAdapterr.MyVi
         holder.btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                FirebaseFirestore db;
+                db = FirebaseFirestore.getInstance();
+                db.collection("Artikli").document(BazaHolder.temp_automobil).delete()
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                artikalArrayList.remove(position);
+                                notifyItemRemoved(position);
+                                notifyItemRangeChanged(position, artikalArrayList.size());
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
 
+                            }
+                        });
             }
         });
 

@@ -13,6 +13,7 @@ public class Automobil {
     public String godiste, kilometraza, gorivo, kilovati, transmisija, konjske_snage, boja, registracija, esp, klima, navigacija, tempomat;
     public String katt;
 
+
     public Automobil(String katt, String godiste, String kilometraza, String gorivo, String kilovati,
                      String transmisija, String konjske_snage, String boja, String registracija,
                      String esp, String klima, String navigacija, String tempomat) {

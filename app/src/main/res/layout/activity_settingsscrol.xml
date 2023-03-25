@@ -38,7 +38,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/basic"
                     android:textSize="23dp"
                     android:text="Market"/>
@@ -74,7 +74,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/basic"
                     android:textSize="22dp"
                     android:text="Novcanik"/>
@@ -129,7 +129,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/basic"
                 android:textSize="22dp"
                 android:text="Objavite artikal"/>
@@ -161,7 +161,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/basic"
                     android:textSize="22dp"
                     android:text="Zadnje otvoreni artikli"/>
@@ -192,7 +192,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/basic"
                     android:textSize="22dp"
                     android:text="Spašeni artikli"/>
@@ -223,7 +223,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/basic"
                     android:textSize="22dp"
                     android:text="Spašeni korisnici"/>
@@ -254,7 +254,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/basic"
                     android:textSize="22dp"
                     android:text="Spašene pretrage"/>
@@ -304,7 +304,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/basic"
                     android:textSize="22dp"
                     android:text="Moji artikli"/>
@@ -335,7 +335,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/basic"
                     android:textSize="22dp"
                     android:text="PIK narudžbe"/>
@@ -366,7 +366,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/basic"
                     android:textSize="22dp"
                     android:text="PIK Shopovi"/>
@@ -416,7 +416,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/basic"
                     android:textSize="22dp"
                     android:text="PIK Blog"/>
@@ -447,7 +447,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/basic"
                     android:textSize="22dp"
                     android:text="Marketing"/>
@@ -478,7 +478,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/basic"
                     android:textSize="22dp"
                     android:text="Online sigurnost"/>
@@ -509,7 +509,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/basic"
                     android:textSize="22dp"
                     android:text="Podrška korisnicima"/>
@@ -540,7 +540,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/basic"
                     android:textSize="22dp"
                     android:text="Postavke"/>
@@ -570,7 +570,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/basic"
                     android:textSize="22dp"
                     android:text="Odjava"/>

@@ -28,7 +28,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/baseline_store_24"
-                    android:layout_marginRight="60dp">
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="10dp">
 
                 </ImageView>
 
@@ -62,7 +64,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/baseline_account_balance_wallet_24"
-                    android:layout_marginRight="60dp">
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="10dp">
 
                 </ImageView>
 
@@ -115,7 +119,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/outline_subject_24"
-                android:layout_marginRight="60dp">
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="10dp">
 
             </ImageView>
 
@@ -145,7 +151,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/back_menu_24"
-                    android:layout_marginRight="60dp">
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="10dp">
 
                 </ImageView>
 
@@ -174,7 +182,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/outline_star_outline_24"
-                    android:layout_marginRight="60dp">
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="10dp">
 
                 </ImageView>
 
@@ -203,7 +213,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/outline_supervisor_account_24"
-                    android:layout_marginRight="60dp">
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="10dp">
 
                 </ImageView>
 
@@ -232,7 +244,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/baseline_youtube_searched_for_24"
-                    android:layout_marginRight="60dp">
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="10dp">
 
                 </ImageView>
 
@@ -280,7 +294,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/baseline_featured_play_list_24"
-                    android:layout_marginRight="60dp">
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="10dp">
 
                 </ImageView>
 
@@ -309,7 +325,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/baseline_fire_truck_24"
-                    android:layout_marginRight="60dp">
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="10dp">
 
                 </ImageView>
 
@@ -338,7 +356,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/baseline_storefront_24"
-                    android:layout_marginRight="60dp">
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="10dp">
 
                 </ImageView>
 
@@ -386,7 +406,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/outline_badge_24"
-                    android:layout_marginRight="60dp">
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="10dp">
 
                 </ImageView>
 
@@ -415,7 +437,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/baseline_app_registration_24"
-                    android:layout_marginRight="60dp">
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="10dp">
 
                 </ImageView>
 
@@ -444,7 +468,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/baseline_health_and_safety_24"
-                    android:layout_marginRight="60dp">
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="10dp">
 
                 </ImageView>
 
@@ -473,7 +499,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/baseline_question_mark_24"
-                    android:layout_marginRight="60dp">
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="10dp">
 
                 </ImageView>
 
@@ -502,7 +530,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/baseline_settings_24"
-                    android:layout_marginRight="60dp">
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="10dp">
 
                 </ImageView>
 
@@ -530,7 +560,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/baseline_logout_24"
-                    android:layout_marginRight="60dp">
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="10dp">
 
                 </ImageView>
 

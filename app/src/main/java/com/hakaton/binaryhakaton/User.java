@@ -11,17 +11,21 @@ public class User {
     public String username, email, priv;
 
     public ArrayList<String> poruke = new ArrayList<String>();
+    public ArrayList<String> favorites = new ArrayList<String>();
+    public ArrayList<String> moji_dodani = new ArrayList<String>();
 
 
     public User() {
 
     }
 
-    public User(String username, String email, String priv, ArrayList<String> poruke) {
+    public User(String username, String email, String priv, ArrayList<String> poruke,ArrayList<String> favorites, ArrayList<String> moji_dodani) {
         this.username = username;
         this.email = email;
         this.priv = priv;
         this.poruke = poruke;
+        this.favorites = favorites;
+        this.moji_dodani = moji_dodani;
     }
 
 }

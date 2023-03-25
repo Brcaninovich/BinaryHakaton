@@ -1,16 +1,19 @@
 package com.hakaton.binaryhakaton.ui.add;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -18,6 +21,9 @@ import androidx.lifecycle.ViewModelProvider;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.hakaton.binaryhakaton.Artikal;
 import com.hakaton.binaryhakaton.BazaHolder;
 import com.hakaton.binaryhakaton.R;
@@ -36,7 +42,13 @@ public class AddFragment extends Fragment {
     private FragmentAddBinding binding;
     private FirebaseFirestore db;
     private ArrayList<CardView> temp_slike = new ArrayList<CardView>();
+    private ArrayList<ImageView> temp_img = new ArrayList<ImageView>();
+    private ArrayList<String> lista_slika = new ArrayList<String>();
+    private StorageReference storageReference;
+    private String mDownloadUrl;
     private int brojac = 0;
+    private int brojac_dva;
+    private Uri imageUri;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -56,6 +68,13 @@ public class AddFragment extends Fragment {
         temp_slike.add(binding.cardDodaj5);
         temp_slike.add(binding.cardDodaj6);
 
+        temp_img.add(binding.roundedImageView1);
+        temp_img.add(binding.roundedImageView2);
+        temp_img.add(binding.roundedImageView3);
+        temp_img.add(binding.roundedImageView4);
+        temp_img.add(binding.roundedImageView5);
+        temp_img.add(binding.roundedImageView6);
+
 
         binding.dodajSlikuButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +86,54 @@ public class AddFragment extends Fragment {
                         binding.dodajSlikuButton.setVisibility(View.GONE);
                     }
                 }
+            }
+        });
+
+        binding.cardDodaj1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                brojac_dva = 0;
+                dodajSliku();
+            }
+        });
+
+        binding.cardDodaj2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                brojac_dva = 1;
+                dodajSliku();
+            }
+        });
+
+        binding.cardDodaj3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                brojac_dva = 2;
+                dodajSliku();
+            }
+        });
+
+        binding.cardDodaj4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                brojac_dva = 3;
+                dodajSliku();
+            }
+        });
+
+        binding.cardDodaj5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                brojac_dva = 4;
+                dodajSliku();
+            }
+        });
+
+        binding.cardDodaj6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                brojac_dva = 5;
+                dodajSliku();
             }
         });
 
@@ -231,7 +298,7 @@ public class AddFragment extends Fragment {
         final String objava_user = BazaHolder.username;
         final String detaljni_opis = binding.detaljanOpisInput.getText().toString();
         final String lokacija = binding.odaberiGrad.getSelectedItem().toString();
-        ArrayList<String> slike = new ArrayList<String>();
+
         final String cijena = binding.cijenaInput.getText().toString();
 
 
@@ -252,7 +319,7 @@ public class AddFragment extends Fragment {
                 transmisija, konjske_snage, boja, registracija, esp, klima, navigacija, tempomat);
 
         Artikal artikal = new Artikal(naziv_artikla, stanje, objava_date, objava_user,
-                detaljni_opis, lokacija, slike, cijena, automobil);
+                detaljni_opis, lokacija, lista_slika, cijena, automobil);
 
         db.collection("Artikli").document(naziv_artikla)
                 .set(artikal)
@@ -267,6 +334,54 @@ public class AddFragment extends Fragment {
                         Toast.makeText(getActivity(), e.getMessage().toString(), Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    private void uploadImage(){
+        String naziv_artikla = binding.nazivInput.getText().toString();
+        SimpleDateFormat formater = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.GERMAN);
+        Date now = new Date();
+        naziv_artikla = formater.format(now);
+        storageReference = FirebaseStorage.getInstance().getReference("images/"+naziv_artikla);
+        String finalNaziv_artikla = naziv_artikla;
+        storageReference.putFile(imageUri)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        storageReference = FirebaseStorage.getInstance().getReference("/images");
+                        StorageReference dateRef = storageReference.child(finalNaziv_artikla);
+                        dateRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                mDownloadUrl = uri.toString();
+                                lista_slika.add(mDownloadUrl);
+                            }
+                        });
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getActivity(), "Ne Radi slika", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void dodajSliku(){
+        Intent intent = new Intent();
+        intent.setType("image/");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, 100);
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 100 && data != null && data.getData() != null){
+            imageUri = data.getData();
+            temp_img.get(brojac_dva).setImageURI(imageUri);
+            uploadImage();
+        }
     }
 
     @Override

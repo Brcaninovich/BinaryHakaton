@@ -53,6 +53,8 @@ public class RegisterForm extends AppCompatActivity {
         String email = binding.emailInput.getText().toString().trim();
         String password = binding.passwordInput.getText().toString().trim();
         ArrayList<String> poruke = new ArrayList<String>();
+        ArrayList<String> favorites = new ArrayList<String>();
+        ArrayList<String> moji_dodani = new ArrayList<String>();
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
@@ -63,7 +65,9 @@ public class RegisterForm extends AppCompatActivity {
                                 username,
                                 email,
                                 "user",
-                                poruke
+                                poruke,
+                                favorites,
+                                moji_dodani
                         );
 
                         mDatabase.child(FirebaseAuth.getInstance().getCurrentUser().getUid())

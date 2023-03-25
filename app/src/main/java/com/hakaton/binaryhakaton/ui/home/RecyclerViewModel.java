@@ -13,6 +13,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -46,10 +48,13 @@ public class RecyclerViewModel extends RecyclerView.Adapter<RecyclerViewModel.My
 
         Artikal artikal = artikalArrayList.get(position);
         holder.naziv_oglasa.setText(artikal.naziv_oglasa);
-        /*Glide.with(holder.itemView.getContext())
-                .load(artikal.slika)
-                .into(holder.baner_slika);*/
-        holder.cijena.setText("Ocjena: " + artikal.cijena.toString());
+        Glide
+                .with(holder.itemView.getContext())
+                .load(artikal.slike.get(0))
+                .apply(new RequestOptions().override(1000, 450))
+                .centerCrop()
+                .into(holder.baner_slika);
+        holder.cijena.setText(artikal.cijena.toString() + " KM");
 
 
         holder.itemView.setOnClickListener (new View.OnClickListener() {

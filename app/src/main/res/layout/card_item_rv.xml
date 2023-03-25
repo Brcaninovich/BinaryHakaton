@@ -27,8 +27,10 @@
             android:id="@+id/naziv_oglasa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
+            android:textAlignment="textStart"
             android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:textSize="20sp"
             android:text="NAZIV ARTIKLA"/>
 
         <TextView

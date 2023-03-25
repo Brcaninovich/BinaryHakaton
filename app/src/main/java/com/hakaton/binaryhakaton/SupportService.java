@@ -20,6 +20,8 @@ public class SupportService extends AppCompatActivity {
     
    // ActivitySupportServiceBinding binding;
 
+    //navigation_notifications
+
     private EditText emailAddress;
     private EditText message;
     private EditText subject;

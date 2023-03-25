@@ -13,6 +13,7 @@ import com.hakaton.binaryhakaton.databinding.ActivitySettingsscrolBinding;
 
 public class settingsscrol extends AppCompatActivity {
 
+    LinearLayout moji_artikli;
     LinearLayout odjava;
     LinearLayout podrska_korisnicima;
     FirebaseAuth mAuth;
@@ -27,6 +28,8 @@ public class settingsscrol extends AppCompatActivity {
         setContentView(root);
 
         mAuth = FirebaseAuth.getInstance();
+
+
 
         odjava = (LinearLayout) findViewById(R.id.odjava);
         podrska_korisnicima =(LinearLayout) findViewById(R.id.podrska_korisnicima);

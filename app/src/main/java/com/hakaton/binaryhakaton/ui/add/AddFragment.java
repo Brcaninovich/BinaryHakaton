@@ -18,12 +18,17 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.hakaton.binaryhakaton.Artikal;
+import com.hakaton.binaryhakaton.BazaHolder;
 import com.hakaton.binaryhakaton.R;
 import com.hakaton.binaryhakaton.databinding.FragmentAddBinding;
 import com.hakaton.binaryhakaton.databinding.FragmentDashboardBinding;
 import com.hakaton.binaryhakaton.kategorija.Automobil;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class AddFragment extends Fragment {
 
@@ -197,20 +202,16 @@ public class AddFragment extends Fragment {
 
         final String naziv_artikla = binding.nazivInput.getText().toString();
         final String stanje = binding.odaberiStanje.getSelectedItem().toString();
-        final String objava_date = "15.02.2023";
-        final String objava_user = "Dzeno";
+        Date c = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("dd.MMM.yyyy", Locale.getDefault());
+        final String objava_date = df.format(c);
+        final String objava_user = BazaHolder.username;
         final String detaljni_opis = binding.detaljanOpisInput.getText().toString();
         final String lokacija = binding.odaberiGrad.getSelectedItem().toString();
         ArrayList<String> slike = new ArrayList<String>();
         final String cijena = binding.cijenaInput.getText().toString();
 
-        /*public Automobil(String godiste, String kilometraza, String gorivo, String kilovati,
-                String transmisija, String konjske_snage, String boja, String registracija,
-                String esp, String klima, String navigacija, String tempomat) {*/
 
-         /*public Artikal(String naziv_oglasa, String stanje, String objava_date,
-                String objavio_username, String detaljni_opis, String lokacija,
-                ArrayList<String> slike, Float cijena, Object kategorija) {*/
         final String godiste = binding.godisteInput.getText().toString();
         final String kilometraza = binding.kilometrazaInput.getText().toString();
         final String gorivo = binding.odaberiGorivo.getSelectedItem().toString();

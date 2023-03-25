@@ -19,6 +19,10 @@ public class Artikal {
 
     public String naziv_oglasa, stanje, objava_date, objavio_username, detaljni_opis, lokacija;
     public ArrayList<String> slike = new ArrayList<String>();
+
+    public Artikal() {
+    }
+
     public String cijena;
     public Object kategorija;
 }

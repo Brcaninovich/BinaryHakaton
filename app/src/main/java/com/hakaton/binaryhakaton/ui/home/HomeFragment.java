@@ -2,21 +2,36 @@ package com.hakaton.binaryhakaton.ui.home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.hakaton.binaryhakaton.Artikal;
 import com.hakaton.binaryhakaton.LoginForm;
 import com.hakaton.binaryhakaton.databinding.FragmentHomeBinding;
+
+import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
+    ArrayList<Artikal> artikalArrayList;
+    RecyclerViewModel myAdapter;
+
+    FirebaseFirestore db;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -25,6 +40,15 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        db = FirebaseFirestore.getInstance();
+
+        binding.recyclerView.setHasFixedSize(true);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        artikalArrayList = new ArrayList<Artikal>();
+        myAdapter = new RecyclerViewModel(getActivity(), artikalArrayList);
+        binding.recyclerView.setAdapter(myAdapter);
+
 
         final TextView textView = binding.textHome;
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
@@ -37,12 +61,41 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        EventChangeListener();
+
         return root;
     }
+
+
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    private void EventChangeListener(){
+
+        db.collection("Artikli")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if(error != null){
+                            Log.e("Firestore error", error.getMessage());
+                            return;
+                        }
+
+                        for(DocumentChange dc : value.getDocumentChanges()){
+                            if(dc.getType() == DocumentChange.Type.ADDED){
+                                    artikalArrayList.add(dc.getDocument().toObject(Artikal.class));
+                            }
+                            myAdapter.notifyDataSetChanged();
+
+                        }
+                        if(artikalArrayList.isEmpty()){
+
+                        }
+                    }
+                });
     }
 }

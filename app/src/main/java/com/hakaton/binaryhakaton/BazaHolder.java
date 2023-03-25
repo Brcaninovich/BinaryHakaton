@@ -1,13 +1,19 @@
 package com.hakaton.binaryhakaton;
 
 import android.app.Application;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.hakaton.binaryhakaton.kategorija.Automobil;
 
 import java.util.ArrayList;
 
@@ -32,6 +38,8 @@ public class BazaHolder extends Application {
     public static String priv;
 
     public static ArrayList<String> poruke = new ArrayList<String>();
+    public static ArrayList<String> favorites = new ArrayList<String>();
+    public static ArrayList<String> moji_dodani = new ArrayList<String>();
 
     @Override
     public void onCreate() {
@@ -50,6 +58,8 @@ public class BazaHolder extends Application {
                     email = post.email;
                     priv = post.priv;
                     poruke = post.poruke;
+                    favorites = post.favorites;
+                    moji_dodani = post.moji_dodani;
                 }
 
                 @Override
@@ -72,6 +82,9 @@ public class BazaHolder extends Application {
                 email = post.email;
                 priv = post.priv;
                 poruke = post.poruke;
+                favorites = post.favorites;
+                moji_dodani = post.moji_dodani;
+
             }
 
             @Override
@@ -79,5 +92,31 @@ public class BazaHolder extends Application {
 
             }
         });
+    }
+
+    public static void update_account(){
+
+        /*public User(String username, String email, String priv, ArrayList<String> poruke,ArrayList<String> favorites, ArrayList<String> moji_dodani) {
+            this.username = username;
+            this.email = email;
+            this.priv = priv;
+            this.poruke = poruke;
+            this.favorites = favorites;
+            this.moji_dodani = moji_dodani;
+        }*/
+        User user = new User(username, email, priv, poruke, favorites, moji_dodani );
+        reference_rd = realtime_database.getReference("Users").child(mAuth.getUid());
+        reference_rd.setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
+
     }
 }

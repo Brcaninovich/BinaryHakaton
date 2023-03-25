@@ -3,6 +3,12 @@ package com.hakaton.binaryhakaton.kategorija;
 import java.util.ArrayList;
 
 public class Automobil {
+    public String getGodiste() {
+        return godiste;
+    }
+
+    public Automobil() {
+    }
 
     public String godiste, kilometraza, gorivo, kilovati, transmisija, konjske_snage, boja, registracija, esp, klima, navigacija, tempomat;
     public String katt;

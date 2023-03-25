@@ -1,11 +1,13 @@
 package com.hakaton.binaryhakaton;
 
+import com.hakaton.binaryhakaton.kategorija.Automobil;
+
 import java.util.ArrayList;
 
 public class Artikal {
     public Artikal(String naziv_oglasa, String stanje, String objava_date,
                    String objavio_username, String detaljni_opis, String lokacija,
-                   ArrayList<String> slike, String cijena, Object kategorija) {
+                   ArrayList<String> slike, String cijena, Automobil kategorija) {
         this.naziv_oglasa = naziv_oglasa;
         this.stanje = stanje;
         this.objava_date = objava_date;
@@ -17,6 +19,7 @@ public class Artikal {
         this.kategorija = kategorija;
     }
 
+
     public String naziv_oglasa, stanje, objava_date, objavio_username, detaljni_opis, lokacija;
     public ArrayList<String> slike = new ArrayList<String>();
 
@@ -24,5 +27,7 @@ public class Artikal {
     }
 
     public String cijena;
-    public Object kategorija;
+
+
+    public Automobil kategorija;
 }

@@ -1,10 +1,13 @@
-package com.hakaton.binaryhakaton.ui.home;
+package com.hakaton.binaryhakaton.ui.notifications;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,12 +27,12 @@ import com.hakaton.binaryhakaton.R;
 
 import java.util.ArrayList;
 
-public class RecyclerViewModel extends RecyclerView.Adapter<RecyclerViewModel.MyViewHolder>{
+public class RecyclerAdapterr extends RecyclerView.Adapter<RecyclerAdapterr.MyViewHolder>{
     Context context;
     ArrayList<Artikal> artikalArrayList;
-    boolean clicked = false;
+    public boolean clicked = false;
 
-    public RecyclerViewModel(Context context, ArrayList<Artikal> artikalArrayList) {
+    public RecyclerAdapterr(Context context, ArrayList<Artikal> artikalArrayList) {
         this.context = context;
         this.artikalArrayList = artikalArrayList;
     }
@@ -38,13 +41,13 @@ public class RecyclerViewModel extends RecyclerView.Adapter<RecyclerViewModel.My
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(context).inflate(R.layout.card_item_rv, parent, false);
+        View v = LayoutInflater.from(context).inflate(R.layout.card_item_rv_favorites, parent, false);
 
         return new MyViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
 
         Artikal artikal = artikalArrayList.get(position);
@@ -69,6 +72,19 @@ public class RecyclerViewModel extends RecyclerView.Adapter<RecyclerViewModel.My
             }
         });
 
+        holder.btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(BazaHolder.favorites.contains(artikal.naziv_oglasa)){
+                    BazaHolder.favorites.remove(artikal.naziv_oglasa);
+                    artikalArrayList.remove(position);
+                    notifyItemRemoved(position);
+                    notifyItemRangeChanged(position, artikalArrayList.size());
+                    BazaHolder.update_account();
+                }
+            }
+        });
+
     }
 
     @Override
@@ -81,12 +97,16 @@ public class RecyclerViewModel extends RecyclerView.Adapter<RecyclerViewModel.My
 
         TextView naziv_oglasa,  cijena;
         ImageView baner_slika;
+        LinearLayout layout;
+        Button btn;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             naziv_oglasa = itemView.findViewById(R.id.naziv_oglasa);
             baner_slika = itemView.findViewById(R.id.oglas_slika);
             cijena = itemView.findViewById(R.id.cijena_oglasa);
+            layout = itemView.findViewById(R.id.btn_holder);
+            btn = itemView.findViewById(R.id.ukloni_fav_button);
         }
     }
 

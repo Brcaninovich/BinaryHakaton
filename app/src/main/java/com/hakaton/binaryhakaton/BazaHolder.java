@@ -94,6 +94,15 @@ public class BazaHolder extends Application {
         });
     }
 
+    public static void odjava(){
+        username = null;
+        email = null;
+        priv = null;
+        poruke = null;
+        favorites = null;
+        moji_dodani = null;
+    }
+
     public static void update_account(){
 
         /*public User(String username, String email, String priv, ArrayList<String> poruke,ArrayList<String> favorites, ArrayList<String> moji_dodani) {

@@ -21,6 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.hakaton.binaryhakaton.Artikal;
+import com.hakaton.binaryhakaton.BazaHolder;
 import com.hakaton.binaryhakaton.LoginForm;
 import com.hakaton.binaryhakaton.databinding.FragmentHomeBinding;
 import com.hakaton.binaryhakaton.settingsscrol;
@@ -44,6 +45,10 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         mAuth = FirebaseAuth.getInstance();
+
+        if(mAuth.getUid() != null){
+            BazaHolder.rebase();
+        }
 
         db = FirebaseFirestore.getInstance();
 

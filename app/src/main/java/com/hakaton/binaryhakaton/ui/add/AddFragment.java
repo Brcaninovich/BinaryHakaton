@@ -20,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -49,6 +50,7 @@ public class AddFragment extends Fragment {
     private int brojac = 0;
     private int brojac_dva;
     private Uri imageUri;
+    FirebaseAuth mAuth;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -57,231 +59,241 @@ public class AddFragment extends Fragment {
 
         binding = FragmentAddBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        binding.osnovneInfoSkrol.setVisibility(View.VISIBLE);
-        binding.dodatneSlikeSkrolAutomobil.setVisibility(View.GONE);
-        binding.dodatneInfoSkrolAutomobil.setVisibility(View.GONE);
+        mAuth = FirebaseAuth.getInstance();
+        if(mAuth.getUid() != null){
+            binding.osnovneInfoSkrol.setVisibility(View.VISIBLE);
+            binding.dodatneSlikeSkrolAutomobil.setVisibility(View.GONE);
+            binding.dodatneInfoSkrolAutomobil.setVisibility(View.GONE);
 
-        temp_slike.add(binding.cardDodaj1);
-        temp_slike.add(binding.cardDodaj2);
-        temp_slike.add(binding.cardDodaj3);
-        temp_slike.add(binding.cardDodaj4);
-        temp_slike.add(binding.cardDodaj5);
-        temp_slike.add(binding.cardDodaj6);
+            temp_slike.add(binding.cardDodaj1);
+            temp_slike.add(binding.cardDodaj2);
+            temp_slike.add(binding.cardDodaj3);
+            temp_slike.add(binding.cardDodaj4);
+            temp_slike.add(binding.cardDodaj5);
+            temp_slike.add(binding.cardDodaj6);
 
-        temp_img.add(binding.roundedImageView1);
-        temp_img.add(binding.roundedImageView2);
-        temp_img.add(binding.roundedImageView3);
-        temp_img.add(binding.roundedImageView4);
-        temp_img.add(binding.roundedImageView5);
-        temp_img.add(binding.roundedImageView6);
+            temp_img.add(binding.roundedImageView1);
+            temp_img.add(binding.roundedImageView2);
+            temp_img.add(binding.roundedImageView3);
+            temp_img.add(binding.roundedImageView4);
+            temp_img.add(binding.roundedImageView5);
+            temp_img.add(binding.roundedImageView6);
 
 
-        binding.dodajSlikuButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(brojac <5){
-                    brojac++;
-                    temp_slike.get(brojac).setVisibility(View.VISIBLE);
-                    if(brojac == 5){
-                        binding.dodajSlikuButton.setVisibility(View.GONE);
+            binding.dodajSlikuButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(brojac <5){
+                        brojac++;
+                        temp_slike.get(brojac).setVisibility(View.VISIBLE);
+                        if(brojac == 5){
+                            binding.dodajSlikuButton.setVisibility(View.GONE);
+                        }
                     }
                 }
-            }
-        });
+            });
 
-        binding.cardDodaj1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                brojac_dva = 0;
-                dodajSliku();
-            }
-        });
-
-        binding.cardDodaj2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                brojac_dva = 1;
-                dodajSliku();
-            }
-        });
-
-        binding.cardDodaj3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                brojac_dva = 2;
-                dodajSliku();
-            }
-        });
-
-        binding.cardDodaj4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                brojac_dva = 3;
-                dodajSliku();
-            }
-        });
-
-        binding.cardDodaj5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                brojac_dva = 4;
-                dodajSliku();
-            }
-        });
-
-        binding.cardDodaj6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                brojac_dva = 5;
-                dodajSliku();
-            }
-        });
-
-        db = FirebaseFirestore.getInstance();
-
-        ArrayAdapter<String> kantoni = new ArrayAdapter<>(getActivity(),
-                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.kantoni));
-        kantoni.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        binding.odaberiKanton.setAdapter(kantoni);
-
-        ArrayAdapter<String> kategorija = new ArrayAdapter<>(getActivity(),
-                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Kategorija));
-        kantoni.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        binding.odaberiKategoriju.setAdapter(kategorija);
-
-        ArrayAdapter<String> stanje = new ArrayAdapter<>(getActivity(),
-                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Stanje_Artikla));
-        kantoni.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        binding.odaberiStanje.setAdapter(stanje);
-
-        ArrayAdapter<String> gorivo = new ArrayAdapter<>(getActivity(),
-                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Gorivo));
-        kantoni.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        binding.odaberiGorivo.setAdapter(gorivo);
-
-        ArrayAdapter<String> transmisija = new ArrayAdapter<>(getActivity(),
-                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Transmisija));
-        kantoni.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        binding.odaberiTransmisiju.setAdapter(transmisija);
-
-        ArrayAdapter<String> da_ne = new ArrayAdapter<>(getActivity(),
-                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Da_ne));
-        kantoni.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        binding.odabirRegistracija.setAdapter(da_ne);
-        binding.odabirEsp.setAdapter(da_ne);
-        binding.odabirKlima.setAdapter(da_ne);
-        binding.odabirNavigacija.setAdapter(da_ne);
-        binding.odabirTempomat.setAdapter(da_ne);
-
-        binding.odaberiKanton.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                switch (position){
-                    case 1:
-                        ArrayAdapter<String> gradovi = new ArrayAdapter<>(getActivity(),
-                                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.UnskoSanski));
-                        gradovi.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        binding.odaberiGrad.setAdapter(gradovi);
-                        binding.gradLayout.setVisibility(View.VISIBLE);
-                        break;
-                    case 2:
-                        gradovi = new ArrayAdapter<>(getActivity(),
-                                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Posavski));
-                        gradovi.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        binding.odaberiGrad.setAdapter(gradovi);
-                        binding.gradLayout.setVisibility(View.VISIBLE);
-                        break;
-                    case 3:
-                        gradovi = new ArrayAdapter<>(getActivity(),
-                                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Tuzlanski));
-                        gradovi.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        binding.odaberiGrad.setAdapter(gradovi);
-                        binding.gradLayout.setVisibility(View.VISIBLE);
-                        break;
-                    case 4:
-                        gradovi = new ArrayAdapter<>(getActivity(),
-                                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.ZenickoDobojski));
-                        gradovi.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        binding.odaberiGrad.setAdapter(gradovi);
-                        binding.gradLayout.setVisibility(View.VISIBLE);
-                        break;
-                    case 5:
-                        gradovi = new ArrayAdapter<>(getActivity(),
-                                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.BosanskoPodrinjski));
-                        gradovi.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        binding.odaberiGrad.setAdapter(gradovi);
-                        binding.gradLayout.setVisibility(View.VISIBLE);
-                        break;
-                    case 6:
-                        gradovi = new ArrayAdapter<>(getActivity(),
-                                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.SrednjoBosanski));
-                        gradovi.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        binding.odaberiGrad.setAdapter(gradovi);
-                        binding.gradLayout.setVisibility(View.VISIBLE);
-                        break;
-                    case 7:
-                        gradovi = new ArrayAdapter<>(getActivity(),
-                                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.HercegovackoNeretva));
-                        gradovi.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        binding.odaberiGrad.setAdapter(gradovi);
-                        binding.gradLayout.setVisibility(View.VISIBLE);
-                        break;
-                    case 8:
-                        gradovi = new ArrayAdapter<>(getActivity(),
-                                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.ZapadnoHerceg));
-                        gradovi.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        binding.odaberiGrad.setAdapter(gradovi);
-                        binding.gradLayout.setVisibility(View.VISIBLE);
-                        break;
-                    case 9:
-                        gradovi = new ArrayAdapter<>(getActivity(),
-                                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.KantonSarajevo));
-                        gradovi.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        binding.odaberiGrad.setAdapter(gradovi);
-                        binding.gradLayout.setVisibility(View.VISIBLE);
-                        break;
-                    case 10:
-                        gradovi = new ArrayAdapter<>(getActivity(),
-                                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Kanton10));
-                        gradovi.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        binding.odaberiGrad.setAdapter(gradovi);
-                        binding.gradLayout.setVisibility(View.VISIBLE);
-                        break;
-                    default:
-                        binding.gradLayout.setVisibility(View.GONE);
+            binding.cardDodaj1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    brojac_dva = 0;
+                    dodajSliku();
                 }
-            }
+            });
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                binding.gradLayout.setVisibility(View.GONE);
-            }
+            binding.cardDodaj2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    brojac_dva = 1;
+                    dodajSliku();
+                }
+            });
 
-        });
+            binding.cardDodaj3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    brojac_dva = 2;
+                    dodajSliku();
+                }
+            });
 
-        binding.dodatnaSvojstvaButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                binding.osnovneInfoSkrol.setVisibility(View.GONE);
-                binding.dodatneInfoSkrolAutomobil.setVisibility(View.VISIBLE);
-            }
-        });
+            binding.cardDodaj4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    brojac_dva = 3;
+                    dodajSliku();
+                }
+            });
 
-        binding.dodajSlike.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                binding.dodatneInfoSkrolAutomobil.setVisibility(View.GONE);
-                binding.dodatneSlikeSkrolAutomobil.setVisibility(View.VISIBLE);
-            }
-        });
+            binding.cardDodaj5.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    brojac_dva = 4;
+                    dodajSliku();
+                }
+            });
 
-        binding.dodajArtikal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                upload_artikal();
-            }
-        });
+            binding.cardDodaj6.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    brojac_dva = 5;
+                    dodajSliku();
+                }
+            });
 
+            db = FirebaseFirestore.getInstance();
+
+            ArrayAdapter<String> kantoni = new ArrayAdapter<>(getActivity(),
+                    android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.kantoni));
+            kantoni.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            binding.odaberiKanton.setAdapter(kantoni);
+
+            ArrayAdapter<String> kategorija = new ArrayAdapter<>(getActivity(),
+                    android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Kategorija));
+            kantoni.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            binding.odaberiKategoriju.setAdapter(kategorija);
+
+            ArrayAdapter<String> stanje = new ArrayAdapter<>(getActivity(),
+                    android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Stanje_Artikla));
+            kantoni.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            binding.odaberiStanje.setAdapter(stanje);
+
+            ArrayAdapter<String> gorivo = new ArrayAdapter<>(getActivity(),
+                    android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Gorivo));
+            kantoni.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            binding.odaberiGorivo.setAdapter(gorivo);
+
+            ArrayAdapter<String> transmisija = new ArrayAdapter<>(getActivity(),
+                    android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Transmisija));
+            kantoni.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            binding.odaberiTransmisiju.setAdapter(transmisija);
+
+            ArrayAdapter<String> da_ne = new ArrayAdapter<>(getActivity(),
+                    android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Da_ne));
+            kantoni.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            binding.odabirRegistracija.setAdapter(da_ne);
+            binding.odabirEsp.setAdapter(da_ne);
+            binding.odabirKlima.setAdapter(da_ne);
+            binding.odabirNavigacija.setAdapter(da_ne);
+            binding.odabirTempomat.setAdapter(da_ne);
+
+            binding.odaberiKanton.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                    switch (position){
+                        case 1:
+                            ArrayAdapter<String> gradovi = new ArrayAdapter<>(getActivity(),
+                                    android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.UnskoSanski));
+                            gradovi.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            binding.odaberiGrad.setAdapter(gradovi);
+                            binding.gradLayout.setVisibility(View.VISIBLE);
+                            break;
+                        case 2:
+                            gradovi = new ArrayAdapter<>(getActivity(),
+                                    android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Posavski));
+                            gradovi.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            binding.odaberiGrad.setAdapter(gradovi);
+                            binding.gradLayout.setVisibility(View.VISIBLE);
+                            break;
+                        case 3:
+                            gradovi = new ArrayAdapter<>(getActivity(),
+                                    android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Tuzlanski));
+                            gradovi.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            binding.odaberiGrad.setAdapter(gradovi);
+                            binding.gradLayout.setVisibility(View.VISIBLE);
+                            break;
+                        case 4:
+                            gradovi = new ArrayAdapter<>(getActivity(),
+                                    android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.ZenickoDobojski));
+                            gradovi.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            binding.odaberiGrad.setAdapter(gradovi);
+                            binding.gradLayout.setVisibility(View.VISIBLE);
+                            break;
+                        case 5:
+                            gradovi = new ArrayAdapter<>(getActivity(),
+                                    android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.BosanskoPodrinjski));
+                            gradovi.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            binding.odaberiGrad.setAdapter(gradovi);
+                            binding.gradLayout.setVisibility(View.VISIBLE);
+                            break;
+                        case 6:
+                            gradovi = new ArrayAdapter<>(getActivity(),
+                                    android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.SrednjoBosanski));
+                            gradovi.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            binding.odaberiGrad.setAdapter(gradovi);
+                            binding.gradLayout.setVisibility(View.VISIBLE);
+                            break;
+                        case 7:
+                            gradovi = new ArrayAdapter<>(getActivity(),
+                                    android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.HercegovackoNeretva));
+                            gradovi.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            binding.odaberiGrad.setAdapter(gradovi);
+                            binding.gradLayout.setVisibility(View.VISIBLE);
+                            break;
+                        case 8:
+                            gradovi = new ArrayAdapter<>(getActivity(),
+                                    android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.ZapadnoHerceg));
+                            gradovi.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            binding.odaberiGrad.setAdapter(gradovi);
+                            binding.gradLayout.setVisibility(View.VISIBLE);
+                            break;
+                        case 9:
+                            gradovi = new ArrayAdapter<>(getActivity(),
+                                    android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.KantonSarajevo));
+                            gradovi.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            binding.odaberiGrad.setAdapter(gradovi);
+                            binding.gradLayout.setVisibility(View.VISIBLE);
+                            break;
+                        case 10:
+                            gradovi = new ArrayAdapter<>(getActivity(),
+                                    android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Kanton10));
+                            gradovi.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            binding.odaberiGrad.setAdapter(gradovi);
+                            binding.gradLayout.setVisibility(View.VISIBLE);
+                            break;
+                        default:
+                            binding.gradLayout.setVisibility(View.GONE);
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parentView) {
+                    binding.gradLayout.setVisibility(View.GONE);
+                }
+
+            });
+
+            binding.dodatnaSvojstvaButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    binding.osnovneInfoSkrol.setVisibility(View.GONE);
+                    binding.dodatneInfoSkrolAutomobil.setVisibility(View.VISIBLE);
+                }
+            });
+
+            binding.dodajSlike.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    binding.dodatneInfoSkrolAutomobil.setVisibility(View.GONE);
+                    binding.dodatneSlikeSkrolAutomobil.setVisibility(View.VISIBLE);
+                }
+            });
+
+            binding.dodajArtikal.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    upload_artikal();
+                }
+            });
+
+
+
+        }else {
+            Toast.makeText(getActivity(), "Molimo prijavite se...", Toast.LENGTH_LONG).show();
+            binding.osnovneInfoSkrol.setVisibility(View.GONE);
+            binding.dodatneInfoSkrolAutomobil.setVisibility(View.GONE);
+            binding.dodatneSlikeSkrolAutomobil.setVisibility(View.GONE);
+        }
 
 
         return root;

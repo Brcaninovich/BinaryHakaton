@@ -34,6 +34,8 @@ public class HomeFragment extends Fragment {
     ArrayList<Artikal> artikalArrayList;
     RecyclerViewModel myAdapter;
 
+    Boolean pretraga = false;
+
     FirebaseFirestore db;
     FirebaseAuth mAuth;
 
@@ -45,6 +47,8 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         mAuth = FirebaseAuth.getInstance();
+
+        binding.searchBarLayout.setVisibility(View.GONE);
 
         if(mAuth.getUid() != null){
             BazaHolder.rebase();
@@ -76,6 +80,27 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        binding.findButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pretraga = !pretraga;
+                if(pretraga){
+                    binding.searchBarLayout.setVisibility(View.VISIBLE);
+                }else{
+                    binding.searchBarLayout.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        binding.pretragaBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                artikalArrayList.clear();
+                EventChangeListener2();
+                myAdapter.notifyDataSetChanged();
+            }
+        });
+
         EventChangeListener();
 
         return root;
@@ -87,6 +112,33 @@ public class HomeFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    private void EventChangeListener2(){
+
+        db.collection("Artikli")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if(error != null){
+                            Log.e("Firestore error", error.getMessage());
+                            return;
+                        }
+
+                        for(DocumentChange dc : value.getDocumentChanges()){
+                            if(dc.getType() == DocumentChange.Type.ADDED){
+                                if(dc.getDocument().toObject(Artikal.class).naziv_oglasa.equals(binding.nazivInput.getText().toString())){
+                                    artikalArrayList.add(dc.getDocument().toObject(Artikal.class));
+                                }
+                            }
+                            myAdapter.notifyDataSetChanged();
+
+                        }
+                        if(artikalArrayList.isEmpty()){
+
+                        }
+                    }
+                });
     }
 
     private void EventChangeListener(){

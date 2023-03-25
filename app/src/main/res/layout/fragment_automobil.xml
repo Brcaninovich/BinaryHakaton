@@ -59,6 +59,15 @@
             android:layout_height="250dp"
             android:background="@color/black"/>
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/promslikuBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="promjeni sliku"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            />
+
         <TextView
             android:id="@+id/naslov_automobila"
             android:layout_width="match_parent"

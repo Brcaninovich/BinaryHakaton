@@ -24,6 +24,7 @@ import com.hakaton.binaryhakaton.obavljanje_kupovine_auta;
 public class AutomobilFragment extends Fragment {
 
     private FragmentAutomobilBinding binding;
+    int brojac;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -36,12 +37,32 @@ public class AutomobilFragment extends Fragment {
 
         Artikal artikal = BazaHolder.getTemp_artikal();
         Automobil automobil = artikal.kategorija;
+        brojac = 0;
         Glide
                 .with(getContext())
-                .load(artikal.slike.get(0))
+                .load(artikal.slike.get(brojac))
                 .apply(new RequestOptions().override(1000, 600))
                 .centerCrop()
                 .into(binding.slikeAutomobil);
+
+        binding.promslikuBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(brojac == artikal.slike.size() - 1){
+                    brojac = 0;
+                }else{
+                    brojac++;
+                }
+
+
+                Glide
+                        .with(getContext())
+                        .load(artikal.slike.get(brojac))
+                        .apply(new RequestOptions().override(1000, 600))
+                        .centerCrop()
+                        .into(binding.slikeAutomobil);
+            }
+        });
 
         binding.naslovAutomobila.setText(artikal.naziv_oglasa);
         binding.cijenaAutomobila.setText(artikal.cijena);
@@ -82,10 +103,15 @@ public class AutomobilFragment extends Fragment {
             binding.ugovoriKupovinu.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    BazaHolder.temp_automobil = artikal.naziv_oglasa;
-                    Intent intent = new Intent(getActivity(), obavljanje_kupovine_auta.class);
-                    startActivity(intent);
-                    getActivity().finish();
+                    if (BazaHolder.username.equals(artikal.objavio_username)) {
+                        Toast.makeText(getActivity(), "Ne mozete kupiti sam svoj artikal", Toast.LENGTH_SHORT).show();
+                    }else{
+                        BazaHolder.temp_automobil = artikal.naziv_oglasa;
+                        Intent intent = new Intent(getActivity(), obavljanje_kupovine_auta.class);
+                        startActivity(intent);
+                        getActivity().finish();
+                    }
+                    
                 }
             });
 

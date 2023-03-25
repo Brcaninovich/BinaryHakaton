@@ -292,6 +292,7 @@ public class AddFragment extends Fragment {
                 public void onClick(View view) {
                     if(binding.odaberiKategoriju.getSelectedItem().equals("Automobil")){
                         binding.osnovneInfoSkrol.setVisibility(View.GONE);
+                        binding.dodatneInfoSkrolOdjeca.setVisibility(View.GONE);
                         binding.dodatneInfoSkrolAutomobil.setVisibility(View.VISIBLE);
                     }else if(binding.odaberiKategoriju.getSelectedItem().equals("Garderoba")){
                         binding.osnovneInfoSkrol.setVisibility(View.GONE);

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -17,7 +18,12 @@ import com.hakaton.binaryhakaton.databinding.ActivitySupportServiceBinding;
 
 public class SupportService extends AppCompatActivity {
     
-    ActivitySupportServiceBinding binding;
+   // ActivitySupportServiceBinding binding;
+
+    private EditText emailAddress;
+    private EditText message;
+    private EditText subject;
+
     
     
     
@@ -25,14 +31,28 @@ public class SupportService extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivitySupportServiceBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        binding.sendBtn.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("QueryPermissionsNeeded")
+        setContentView(R.layout.activity_support_service);
+
+        emailAddress = findViewById(R.id.emailAddress);
+        message = findViewById(R.id.message);
+        subject = findViewById(R.id.subject);
+
+
+        Button sendBtn = findViewById(R.id.sendBtn);
+        sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                sendMail();
+            }
+        });
+       // binding = ActivitySupportServiceBinding.inflate(getLayoutInflater());
+        //setContentView(binding.getRoot());
+        //binding.sendBtn.setOnClickListener(new View.OnClickListener() {
+           // @SuppressLint("QueryPermissionsNeeded")
+           // @Override
+            //public void onClick(View view) {
 
-                String email = binding.emailAddress.getText().toString();
+           /*     String email = binding.emailAddress.getText().toString();
                 String subject = binding.subject.getText().toString();
                 String message = binding.message.getText().toString();
                 
@@ -52,8 +72,24 @@ public class SupportService extends AppCompatActivity {
                 }
                 
             }
-        });
+        });*/
         
+    }
+
+    private void sendMail(){
+        String recipientList = emailAddress.getText().toString();
+        String[] recipents = recipientList.split(",");
+
+        String subjects = subject.getText().toString();
+        String mess = message.getText().toString();
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_EMAIL, recipents);
+        intent.putExtra(Intent.EXTRA_SUBJECT,subjects);
+        intent.putExtra(Intent.EXTRA_TEXT,mess);
+
+        intent.setType("message/rfc882");
+        startActivity(Intent.createChooser(intent,"choose an email client"));
     }
 
 

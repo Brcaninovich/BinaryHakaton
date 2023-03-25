@@ -75,6 +75,15 @@ public class OdjecaFragment extends Fragment {
             binding.dodajKosarica.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    if(!BazaHolder.kosarica.contains(artikal.naziv_oglasa)){
+                        BazaHolder.kosarica.add(artikal.naziv_oglasa);
+                        Toast.makeText(getActivity(), "Artikal ste dodali u kosaricu", Toast.LENGTH_SHORT).show();
+                        BazaHolder.update_account();
+                    }else{
+                        Toast.makeText(getActivity(), "Artikal ste vec dodali", Toast.LENGTH_SHORT).show();
+
+                    }
+
                 }
             });
 

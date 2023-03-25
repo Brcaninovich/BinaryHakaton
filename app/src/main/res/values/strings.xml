@@ -167,6 +167,12 @@
         <item>Zima</item>
     </string-array>
 
+    <string-array name="Placanje">
+        <item>Odaberi:</item>
+        <item>Pouzecem</item>
+        <item>Karticno</item>
+    </string-array>
+
     <string-array name="Vrsta">
         <item>Odaberi:</item>
         <item>Jakna</item>

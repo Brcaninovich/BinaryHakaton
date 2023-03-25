@@ -43,6 +43,8 @@ public class BazaHolder extends Application {
     public static ArrayList<String> favorites = new ArrayList<String>();
     public static ArrayList<String> moji_dodani = new ArrayList<String>();
 
+    public static ArrayList<String> kosarica = new ArrayList<String>();
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -62,6 +64,7 @@ public class BazaHolder extends Application {
                     poruke = post.poruke;
                     favorites = post.favorites;
                     moji_dodani = post.moji_dodani;
+                    kosarica = post.kosarica;
                 }
 
                 @Override
@@ -86,6 +89,7 @@ public class BazaHolder extends Application {
                 poruke = post.poruke;
                 favorites = post.favorites;
                 moji_dodani = post.moji_dodani;
+                kosarica = post.kosarica;
 
             }
 
@@ -115,7 +119,7 @@ public class BazaHolder extends Application {
             this.favorites = favorites;
             this.moji_dodani = moji_dodani;
         }*/
-        User user = new User(username, email, priv, poruke, favorites, moji_dodani );
+        User user = new User(username, email, priv, poruke, favorites, moji_dodani, kosarica );
         reference_rd = realtime_database.getReference("Users").child(mAuth.getUid());
         reference_rd.setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override

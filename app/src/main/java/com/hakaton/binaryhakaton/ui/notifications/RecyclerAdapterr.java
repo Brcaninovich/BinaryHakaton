@@ -41,7 +41,7 @@ public class RecyclerAdapterr extends RecyclerView.Adapter<RecyclerAdapterr.MyVi
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(context).inflate(R.layout.card_item_rv_favorites, parent, false);
+        View v = LayoutInflater.from(context).inflate(R.layout.card_item_rv_moji_artikli, parent, false);
 
         return new MyViewHolder(v);
     }
@@ -75,13 +75,7 @@ public class RecyclerAdapterr extends RecyclerView.Adapter<RecyclerAdapterr.MyVi
         holder.btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(BazaHolder.favorites.contains(artikal.naziv_oglasa)){
-                    BazaHolder.favorites.remove(artikal.naziv_oglasa);
-                    artikalArrayList.remove(position);
-                    notifyItemRemoved(position);
-                    notifyItemRangeChanged(position, artikalArrayList.size());
-                    BazaHolder.update_account();
-                }
+
             }
         });
 
@@ -99,6 +93,7 @@ public class RecyclerAdapterr extends RecyclerView.Adapter<RecyclerAdapterr.MyVi
         ImageView baner_slika;
         LinearLayout layout;
         Button btn;
+        Button btn2;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -106,7 +101,8 @@ public class RecyclerAdapterr extends RecyclerView.Adapter<RecyclerAdapterr.MyVi
             baner_slika = itemView.findViewById(R.id.oglas_slika);
             cijena = itemView.findViewById(R.id.cijena_oglasa);
             layout = itemView.findViewById(R.id.btn_holder);
-            btn = itemView.findViewById(R.id.ukloni_fav_button);
+            btn = itemView.findViewById(R.id.ukloni_artikal_button);
+            btn2 = itemView.findViewById(R.id.edituj_artikal_button);
         }
     }
 

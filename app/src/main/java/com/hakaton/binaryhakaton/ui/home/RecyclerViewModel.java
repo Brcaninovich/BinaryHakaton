@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.hakaton.binaryhakaton.Artikal;
+import com.hakaton.binaryhakaton.BazaHolder;
 import com.hakaton.binaryhakaton.R;
 
 import java.util.ArrayList;
@@ -60,7 +61,9 @@ public class RecyclerViewModel extends RecyclerView.Adapter<RecyclerViewModel.My
         holder.itemView.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                BazaHolder.setTemp_artikal(artikal);
+                NavController navController = Navigation.findNavController(view);
+                navController.navigate(R.id.navigation_automobil);
             }
         });
 

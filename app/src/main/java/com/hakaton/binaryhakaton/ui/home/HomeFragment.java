@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -22,6 +23,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.hakaton.binaryhakaton.Artikal;
 import com.hakaton.binaryhakaton.LoginForm;
 import com.hakaton.binaryhakaton.databinding.FragmentHomeBinding;
+import com.hakaton.binaryhakaton.settingsscrol;
 
 import java.util.ArrayList;
 
@@ -32,6 +34,7 @@ public class HomeFragment extends Fragment {
     RecyclerViewModel myAdapter;
 
     FirebaseFirestore db;
+    FirebaseAuth mAuth;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -40,6 +43,7 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        mAuth = FirebaseAuth.getInstance();
 
         db = FirebaseFirestore.getInstance();
 
@@ -56,8 +60,14 @@ public class HomeFragment extends Fragment {
         binding.personButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), LoginForm.class);
-                startActivity(intent);
+                if(mAuth.getUid() == null){
+                    Intent intent = new Intent(getActivity(), LoginForm.class);
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent(getActivity(), settingsscrol.class);
+                    startActivity(intent);
+                }
+
             }
         });
 

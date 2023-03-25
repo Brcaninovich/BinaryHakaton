@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -34,6 +35,8 @@ public class AddFragment extends Fragment {
 
     private FragmentAddBinding binding;
     private FirebaseFirestore db;
+    private ArrayList<CardView> temp_slike = new ArrayList<CardView>();
+    private int brojac = 0;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -46,6 +49,26 @@ public class AddFragment extends Fragment {
         binding.dodatneSlikeSkrolAutomobil.setVisibility(View.GONE);
         binding.dodatneInfoSkrolAutomobil.setVisibility(View.GONE);
 
+        temp_slike.add(binding.cardDodaj1);
+        temp_slike.add(binding.cardDodaj2);
+        temp_slike.add(binding.cardDodaj3);
+        temp_slike.add(binding.cardDodaj4);
+        temp_slike.add(binding.cardDodaj5);
+        temp_slike.add(binding.cardDodaj6);
+
+
+        binding.dodajSlikuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(brojac <5){
+                    brojac++;
+                    temp_slike.get(brojac).setVisibility(View.VISIBLE);
+                    if(brojac == 5){
+                        binding.dodajSlikuButton.setVisibility(View.GONE);
+                    }
+                }
+            }
+        });
 
         db = FirebaseFirestore.getInstance();
 

@@ -278,7 +278,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/dodatne_info_skrol_automobil"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -665,12 +665,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/dodatne_slike_skrol_automobil"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:textColor="#A5A5A5"
+                android:text="Naslovna slika"/>
+
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_dodaj1"
@@ -688,7 +698,7 @@
                     android:id="@+id/roundedImageView1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/black"
+                    android:background="@drawable/final_png"
                     android:scaleType="centerCrop"
                     />
 
@@ -704,14 +714,16 @@
                 app:strokeWidth="2dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp">
+                android:layout_marginEnd="32dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/roundedImageView2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/black"
+                    android:background="@drawable/final_png"
                     android:scaleType="centerCrop"
+
                     />
 
             </com.google.android.material.card.MaterialCardView>
@@ -726,13 +738,14 @@
                 app:strokeWidth="2dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp">
+                android:layout_marginEnd="32dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/roundedImageView3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/black"
+                    android:background="@drawable/final_png"
                     android:scaleType="centerCrop"
                     />
 
@@ -748,13 +761,14 @@
                 app:strokeWidth="2dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp">
+                android:layout_marginEnd="32dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/roundedImageView4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/black"
+                    android:background="@drawable/final_png"
                     android:scaleType="centerCrop"
                     />
 
@@ -770,13 +784,14 @@
                 app:strokeWidth="2dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp">
+                android:layout_marginEnd="32dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/roundedImageView5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/black"
+                    android:background="@drawable/final_png"
                     android:scaleType="centerCrop"
                     />
 
@@ -793,19 +808,35 @@
                 app:strokeWidth="2dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp">
+                android:layout_marginEnd="32dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/roundedImageView6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/black"
+                    android:background="@drawable/final_png"
                     android:scaleType="centerCrop"
+
                     />
 
             </com.google.android.material.card.MaterialCardView>
 
-
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/dodaj_sliku_button"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:text="DODAJ SLIKU"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:backgroundTint="#E3E3E3"
+                app:cornerRadius="30dp"
+                app:strokeWidth="2dp"
+                app:strokeColor="#878787"
+                />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/dodaj_artikal"

@@ -1,17 +1,23 @@
 package com.hakaton.binaryhakaton;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.hakaton.binaryhakaton.databinding.ActivityKosaricaCekautBinding;
 
 public class kosarica_cekaut extends AppCompatActivity {
 
     ActivityKosaricaCekautBinding binding;
+    FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,18 +25,25 @@ public class kosarica_cekaut extends AppCompatActivity {
         binding = ActivityKosaricaCekautBinding.inflate(getLayoutInflater());
         View root = binding.getRoot();
         setContentView(root);
+        db = FirebaseFirestore.getInstance();
 
         binding.platiButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                kupljena_kolica();
+                Intent intent = new Intent(kosarica_cekaut.this, GlavniMenu.class);
+                startActivity(intent);
+                finish();
             }
         });
 
         binding.platiButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                kupljena_kolica();
+                Intent intent = new Intent(kosarica_cekaut.this, GlavniMenu.class);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -65,4 +78,25 @@ public class kosarica_cekaut extends AppCompatActivity {
 
         });
     }
+
+    public void kupljena_kolica(){
+
+        for(int i = 0; i < BazaHolder.kosarica.size(); i++ ){
+            db.collection("Artikli").document(BazaHolder.kosarica.get(i)).delete()
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                        }
+                    });
+
+        }
+
+    }
+
 }

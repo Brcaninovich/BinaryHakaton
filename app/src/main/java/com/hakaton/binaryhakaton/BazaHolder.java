@@ -17,6 +17,16 @@ public class BazaHolder extends Application {
     static FirebaseDatabase realtime_database;
     static DatabaseReference reference_rd;
 
+    public static Artikal temp_artikal;
+
+    public static Artikal getTemp_artikal() {
+        return temp_artikal;
+    }
+
+    public static void setTemp_artikal(Artikal temp_artikal) {
+        BazaHolder.temp_artikal = temp_artikal;
+    }
+
     public static String username;
     public static String email;
     public static String priv;

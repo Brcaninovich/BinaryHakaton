@@ -1,18 +1,22 @@
 package com.hakaton.binaryhakaton;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.hakaton.binaryhakaton.databinding.ActivityGlavniMenuBinding;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 
-public class GlavniMenu extends AppCompatActivity {
+public class GlavniMenu extends AppCompatActivity implements NavController.OnDestinationChangedListener{
 
     private ActivityGlavniMenuBinding binding;
 
@@ -32,6 +36,18 @@ public class GlavniMenu extends AppCompatActivity {
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_glavni_menu);
         NavigationUI.setupWithNavController(binding.navView, navController);
+
+        navController.addOnDestinationChangedListener(this);
+
     }
 
+
+    @Override
+    public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
+        if (navDestination.getId() == R.id.navigation_automobil) {
+            binding.navView.setVisibility(View.GONE);
+        } else {
+            binding.navView.setVisibility(View.VISIBLE);
+        }
+    }
 }
